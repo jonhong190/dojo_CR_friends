@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel='stylesheet' type='text/css' href='{{ url_for("static", filename="css/bootstrap.css") }}'>
+</head>
+<body>
+    <div id="background">
+        <div id="wrapper">
+            <h1>My Friends!</h1>
+            <table class='table table-dark'>
+                <tr>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Occupation</th>
+                </tr>
+                {% for friend in friends:%}
+                <tr>
+                    <td>{{ friend['first_name'] }}</td>
+                    <td>{{ friend['last_name'] }}</td>
+                    <td>{{ friend['occupation'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <form action='/create_friend' method='post'>
+                    <label for='first_name'>First Name:</label>
+                    <input type='text' class='form-control-lg' name='first_name'><br>
+                    <label for='last_name'>Last Name:</label>
+                    <input type='text' class='form-control-lg' name='last_name'><br>
+                    <label for='occupation'>Occupation:</label>
+                    <input type='text' class='form-control-lg' name='occupation'><br>
+                    <button type='submit' class='btn btn-primary' name='submit'>Add</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
